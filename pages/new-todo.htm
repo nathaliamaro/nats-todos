@@ -1,0 +1,69 @@
+<div class="col-sm-4 new-todo" id="new-todo">
+    <div class="paper">
+        <div class="outer-box title" ><h1>Get sh*t done</h1></div>
+
+        <div class="outer-box">
+            <div class="outer-box"><p>Create a to do</p></div>
+            <form id="todoform">          <!-- Form starts -->
+
+                <div class="outer-box">
+                  <input type="text" class="form-control" id="new_todo" placeholder="New To do">
+                </div>
+                <hr>
+                <div class="outer-box">
+                  <textarea type="text" class="form-control" id="new_todo_des" placeholder="Description"/>
+                </div>
+                <hr>
+                <div class="outer-box ">
+                  <button class="btn btn-default btn-sm create" type="submit">
+                    CREATE <span class="glyphicon glyphicon-plus orange"></span>
+                  </button>
+                </div>
+
+            </form>        <!-- form ends -->
+        </div>
+    </div> <!-- end of .paper -->
+</div>
+ <script>
+    //|
+    //| view controller
+    //|
+    //| Note the name below shall match id of the section
+    //|
+    window.app.page("new-todo", function() // registering the controller
+    {
+        // initialize view variables in localscope
+
+        var $newtodo = $(this).find('#new_todo');
+        var $description = $(this).find('#new_todo_des');
+
+
+        // presenter of the view - load data and show:
+        return function() {
+            $( "#todoform" ).submit(function( event ) {
+                console.log("inside of newtodo html ");
+                console.log($newtodo);
+                if($newtodo.val() === "" || $description.val() === ""){
+                    alert('You should add some info to these fields');
+                    return false;
+                }
+                var ToDoObject = Parse.Object.extend("ToDoObject");
+                var new_todo = new ToDoObject();
+
+                new_todo.save({title: $newtodo.val(), description: $description.val(), completed: false}, {
+                  success: function(todo) {
+                    $newtodo.val('');
+                    $description.val('');
+                    // window.app("todo-details",todo.id);
+                    window.refresh("todos");
+                  },
+                  error: function(model, error) {
+                    $(".error").show();
+                  }
+                });
+
+                event.preventDefault();
+            });
+        }
+    });
+</script>

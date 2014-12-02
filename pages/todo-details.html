@@ -1,0 +1,68 @@
+<div class="col-sm-4 todo-details" id="todo-details">
+    <div class="paper"> 
+        <div class="outer-box title" ><h1>Todo Details</h1></div>
+
+        <div class="outer-box">
+
+                <div class="outer-box" id="title">
+                </div>
+                <div class="outer-box" id="description">
+                </div>
+                <div class="outer-box">                      
+                     <span class="label" id="completed"></span>
+                </div>
+
+        </div>
+    </div> <!-- end of .paper -->
+</div>
+<script>
+    //|
+    //| view controller
+    //|
+    //| Note the name below shall match id of the section
+    //|
+    window.app.page("todo-details", function() // registering the controller
+    {
+        // initialize view variables in localscope
+        var $todotitle = $(this).find('#title');
+        var $description = $(this).find('#description');
+        var $completed = $(this).find('#completed');
+
+
+        // presenter of the view - load data and show:
+        return function(todoId) {
+            var TodoObject = Parse.Object.extend("ToDoObject");
+            var query = new Parse.Query(TodoObject);
+            // console.log(todoId);
+            query.get(todoId, {
+              success: function(todo) {
+                // The object was retrieved successfully.
+                // $('section#todo-details')
+                console.log(todo);
+                $todotitle.text(todo.get("title"));
+                $description.text(todo.get("description"));
+
+                $completed.removeClass("stretchRight").removeClass("label-success").css('visibility', 'hidden');
+                setTimeout(function(){
+                    $completed.addClass("stretchRight");
+                }, 100);
+                
+                // label-success Completed
+                if (todo.get('completed')) {
+                    $completed.addClass('label-success').text('Completed');
+                } else {
+                    //label-default You need to work on this
+                    $completed.addClass("label-default").text('You need to work on this');                    
+                }
+              },
+              error: function(object, error) {
+                console.log(error);
+                // The object was not retrieved successfully.
+                // error is a Parse.Error with an error code and message.
+              }
+            });
+            // $todotitle.text(newtodotitle.val() );
+
+        }
+    });
+</script>

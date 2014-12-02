@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nats To dos</title>
+    <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/style.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'><!--TittleFont-->
+    <link href='http://fonts.googleapis.com/css?family=Reenie+Beanie' rel='stylesheet' type='text/css'>   <!--TittleFont-->
+    <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,600,700,300italic' rel='stylesheet' type='text/css'>
+    <!-- animations -->
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.2.0-dist/css/animations.css">
+    <script type="text/javascript" src="js/snapp.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <section id="new-todo" src="pages/new-todo.htm"></section>
+            <section id="todos" src="pages/todos.html"></section>
+            <section id="todo-details" src="pages/todo-details.html"></section>
+        </div>
+    </div>
+
+   
+    <script type="text/javascript">
+        $(document).ready(function(){
+            window.app("new-todo");
+            window.app("todos");
+            window.app("todo-details",location.hash.split(":")[1]);
+            Parse.initialize("bwtWmktIP0LkkmEQoDGAF9b6JdZETUHYChvf7TlG", "SmHAcOVj8kN1Ei5afAqGa8emTHpcXaqctaEopP1H");   
+        });
+
+
+
+    </script>
+</body>
+
+</body>
+</html>
