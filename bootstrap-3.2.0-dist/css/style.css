@@ -88,22 +88,6 @@ a {
 	border-radius: 0px;
 }
 
-::-webkit-input-placeholder {
-   color: #580778;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-   color: purple;  
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-   color: purple;  
-}
-
-:-ms-input-placeholder {  
-   color: purple;  
-}
-
 .create{
 	background-color: transparent;
 	border: none;
@@ -148,6 +132,33 @@ a.icon {
 	box-shadow: -2px -2px -4px 1px #AAA9AB;
 }
 
+.paper1{
+	box-shadow: blue;
+	background-color: white;
+	/*-webkit-box-shadow: 2px 2px 4px 1px #AAA9AB;*/
+	box-shadow: 2px 2px 4px 1px #AAA9AB;
+	box-shadow: -2px -2px -4px 1px #AAA9AB;
+}
+
+
+.content{
+	box-shadow: blue;
+	background-color: white;
+	/*-webkit-box-shadow: 2px 2px 4px 1px #AAA9AB;*/
+	box-shadow: 2px 2px 4px 1px #AAA9AB;
+	box-shadow: -2px -2px -4px 1px #AAA9AB;
+
+}
+.content1{
+	padding-top: 3px;
+	box-shadow: blue;
+	background-color: white;
+	/*-webkit-box-shadow: 2px 2px 4px 1px #AAA9AB;*/
+	box-shadow: 2px 2px 4px 1px #AAA9AB;
+	box-shadow: -2px -2px -4px 1px #AAA9AB;
+
+}
+
 hr{
 	display:block;
 	color:1px rgba(00,00,00,0.12);
@@ -161,4 +172,43 @@ body{
 .outer-box span.label{
 	visibility: hidden;
 	display: inline-block;
+}
+
+h1 a{
+	color: white;
+	display: block;
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: none;
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+	.container-fluid{
+		overflow: scroll;
+	}
+
+	.content{
+		display: none;
+	}
+	.content1{
+		display: none;
+	}
+}
+
+.content-active{
+	display: block;
+}
+
+@media only screen 
+and (min-width : 650px) 
+and (max-width : 1024px) {	
+	.container-fluid{
+		overflow: scroll;
+	}
+
+
 }

@@ -1,8 +1,11 @@
-<div class="col-sm-4 new-todo" id="new-todo">
+<div class="new-todo" id="new-todo">
     <div class="paper">
-        <div class="outer-box title" ><h1>Get sh*t done</h1></div>
-
-        <div class="outer-box">
+        <div class="outer-box title" >
+            <h1><a href="">Get sh*t done</a></h1>
+        </div>
+    </div>
+    <div class="content">
+        <div class="outer-box ">
             <div class="outer-box"><p>Create a to do</p></div>
             <form id="todoform">          <!-- Form starts -->
 
@@ -40,6 +43,13 @@
 
         // presenter of the view - load data and show:
         return function() {
+
+            $( ".paper" ).click(function(thingThatStopsRefresh) {
+              thingThatStopsRefresh.preventDefault();
+              $( ".content").toggleClass("content-active");
+            });
+
+
             $( "#todoform" ).submit(function( event ) {
                 console.log("inside of newtodo html ");
                 console.log($newtodo);
@@ -65,5 +75,7 @@
                 event.preventDefault();
             });
         }
+
+
     });
 </script>

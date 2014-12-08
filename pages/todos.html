@@ -1,7 +1,11 @@
-<div class="col-sm-4 todos" id="todo-list">
-    <div class="paper">
-        <div class="outer-box title" ><h1>Current to do</h1></div>
+<div class="todos" id="todo-list">
+    <div class="paper1">
+        <div class="outer-box title" >
+           <a href=""> <h1>Current to do</h1></a>
+        </div>
+    </div>
 
+    <div class="content1">
         <div class="panel panel-default" id="todo-template" style="display:none;"><!--START-SINGLE_TODO-->
             <div class="panel-body">
                 <a href="#" class="glyphicon glyphicon-trash icon deleted"></a>
@@ -13,7 +17,7 @@
         </div><!--END-SINGLE_TODO-->
 
         <div id="todo-container"></div>
-    </div> <!-- end of .paper -->
+    </div> <!-- end of .content -->
 
 </div><!-- END TODO LIST-->
 
@@ -25,6 +29,11 @@
     //|
     window.app.page("todos", function() // registering the controller
     {
+        $( ".paper1" ).click(function(thingThatStopsRefresh) {
+          thingThatStopsRefresh.preventDefault();
+          $( ".content1").toggleClass("content-active");
+        });
+
         // initialize view variables in localscope
         var $todolist = $(this).find('#todo-container');
         var $todotemplate = $(this).find('#todo-template');
@@ -84,11 +93,17 @@
                         $x.find("#title").css("text-decoration","line-through");
                     }
                     $x.find("#title").text(toDos[i].get("title")).attr('href', '#todo-details:'+toDos[i].id);
+                    
                     $x.click(function(){
                         $(".panel").removeClass("active-todo");
                         $(this).addClass("active-todo");
-
+                        //Be able to click the entire panel body not just the link
+                        //Be able to load this info in #todo-details
+                        var currentId = $(this).find(".completed").data("parse_id");
+                        window.app("todo-details", currentId);
+                        $('#todo-details')[0].scrollIntoView();
                     });
+
                     $x.find(".completed").attr("checked", toDos[i].get("completed")); 
                     $x.find(".completed").data("parse_id", toDos[i].id);                   
                     if (toDos[i].get("completed")) {

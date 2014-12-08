@@ -15,15 +15,16 @@
     <link rel="stylesheet" type="text/css" href="bootstrap-3.2.0-dist/css/animations.css">
     <script type="text/javascript" src="js/snapp.js"></script>
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.3.1.min.js"></script>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
 </head>
 <body>
 
     <div class="container-fluid">
         <div class="row">
-            <section id="new-todo" src="pages/new-todo.htm"></section>
-            <section id="todos" src="pages/todos.html"></section>
-            <section id="todo-details" src="pages/todo-details.html"></section>
+            <section id="new-todo" class="col-md-4" src="pages/new-todo.htm"></section>
+            <section id="todos" class="col-md-4" src="pages/todos.html"></section>
+            <section id="todo-details" class="col-md-4" src="pages/todo-details.html"></section>
         </div>
     </div>
 
@@ -35,8 +36,6 @@
             window.app("todo-details",location.hash.split(":")[1]);
             Parse.initialize("bwtWmktIP0LkkmEQoDGAF9b6JdZETUHYChvf7TlG", "SmHAcOVj8kN1Ei5afAqGa8emTHpcXaqctaEopP1H");   
         });
-
-
 
     </script>
 </body>
